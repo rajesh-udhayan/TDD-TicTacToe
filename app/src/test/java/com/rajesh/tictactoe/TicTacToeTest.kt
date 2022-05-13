@@ -71,7 +71,7 @@ class TicTacToeTest {
         ticTacToe.put(xIndex,0,1)
         ticTacToe.put(xIndex,1,1)
         ticTacToe.put(xIndex,2,1)
-        val matchFound = ticTacToe.matchHorizontally(xIndex)
+        val matchFound = ticTacToe.match(xIndex,0)
 
         assertThat(matchFound).isTrue()
     }
@@ -83,7 +83,7 @@ class TicTacToeTest {
         ticTacToe.put(xIndex,0,1)
         ticTacToe.put(xIndex,1,0)
         ticTacToe.put(xIndex,2,1)
-        val matchFound = ticTacToe.matchHorizontally(xIndex)
+        val matchFound = ticTacToe.match(xIndex,0)
 
         assertThat(matchFound).isFalse()
     }
@@ -95,7 +95,7 @@ class TicTacToeTest {
         ticTacToe.put(0,yIndex, 0)
         ticTacToe.put(1,yIndex, 0)
         ticTacToe.put(2,yIndex, 0)
-        val matchFound = ticTacToe.matchVertically(yIndex)
+        val matchFound = ticTacToe.match(0,yIndex)
 
         assertThat(matchFound).isTrue()
     }
@@ -107,7 +107,7 @@ class TicTacToeTest {
         ticTacToe.put(0,yIndex, 0)
         ticTacToe.put(1,yIndex, 1)
         ticTacToe.put(2,yIndex, 0)
-        val matchFound = ticTacToe.matchVertically(yIndex)
+        val matchFound = ticTacToe.match(0,yIndex)
 
         assertThat(matchFound).isFalse()
     }
@@ -117,7 +117,7 @@ class TicTacToeTest {
         ticTacToe.put(0,0,1)
         ticTacToe.put(1,1,1)
         ticTacToe.put(2,2,1)
-        val matchFound = ticTacToe.matchRightDiagonally()
+        val matchFound = ticTacToe.match(0,0)
 
         assertThat(matchFound).isTrue()
     }
@@ -127,14 +127,14 @@ class TicTacToeTest {
         ticTacToe.put(0,0,1)
         ticTacToe.put(1,1,0)
         ticTacToe.put(2,2,1)
-        val matchFound = ticTacToe.matchRightDiagonally()
+        val matchFound = ticTacToe.match(0,0)
 
         assertThat(matchFound).isFalse()
     }
 
     @Test
     fun `should return false when all right diagonal values are -1`(){
-        val matchFound = ticTacToe.matchRightDiagonally()
+        val matchFound = ticTacToe.match(0,0)
 
         assertThat(matchFound).isFalse()
     }
@@ -144,7 +144,7 @@ class TicTacToeTest {
         ticTacToe.put(0,2,1)
         ticTacToe.put(1,1,1)
         ticTacToe.put(2,0,1)
-        val matchFound = ticTacToe.matchLeftDiagonally()
+        val matchFound = ticTacToe.match(0,0)
 
         assertThat(matchFound).isTrue()
     }
@@ -154,14 +154,14 @@ class TicTacToeTest {
         ticTacToe.put(0,2,1)
         ticTacToe.put(1,1,0)
         ticTacToe.put(2,0,1)
-        val matchFound = ticTacToe.matchLeftDiagonally()
+        val matchFound = ticTacToe.match(0,0)
 
         assertThat(matchFound).isFalse()
     }
 
     @Test
     fun `should return false when all left diagonal cells are -1`(){
-        val matchFound = ticTacToe.matchLeftDiagonally()
+        val matchFound = ticTacToe.match(0,0)
 
         assertThat(matchFound).isFalse()
     }
