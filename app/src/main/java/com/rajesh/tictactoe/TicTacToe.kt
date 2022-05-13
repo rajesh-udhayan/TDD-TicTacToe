@@ -53,6 +53,14 @@ class TicTacToe(row: Int) {
     }
 
     fun matchLeftDiagonally(): Boolean {
-        return true
+        var leftCount = 1
+        var length = array.size-1
+        for (index in 0 until array.size-1){
+            if (array[index][length] == array[index+1][length-1]){
+                leftCount++
+            }
+            length--
+        }
+        return leftCount == 3
     }
 }
