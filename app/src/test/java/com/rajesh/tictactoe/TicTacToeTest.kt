@@ -23,7 +23,7 @@ class TicTacToeTest {
     fun `should fill all cells with -1 when game initialized`(){
         ticTacToe.initGame()
 
-        //Randomly test anyone cell value
+        //Randomly verify anyone cell value
         assertThat(ticTacToe.getArray()[0][2]).isEqualTo(-1)
     }
 
@@ -37,4 +37,34 @@ class TicTacToeTest {
 
         assertThat(ticTacToe.getArray()[xIndex][yIndex]).isEqualTo(value)
     }
+
+    @Test
+    fun `should add and return true only when value provided for index is -1`(){
+        val xIndex = 0
+        val yIndex = 1
+        val value = 1
+
+        ticTacToe.initGame()
+        val isAdded = ticTacToe.put(xIndex,yIndex,value)
+
+        assertThat(ticTacToe.getArray()[xIndex][yIndex]).isEqualTo(value)
+        assertThat(isAdded).isEqualTo(true)
+    }
+
+    @Test
+    fun `should not add and return false when value provided for index is not -1`(){
+        val xIndex = 0
+        val yIndex = 1
+        val value = 1
+        val newValue = 0
+
+        ticTacToe.initGame()
+        ticTacToe.put(xIndex,yIndex,value)
+
+        val isAdded = ticTacToe.put(xIndex,yIndex,newValue)
+
+        assertThat(ticTacToe.getArray()[xIndex][yIndex]).isNotEqualTo(newValue)
+        assertThat(isAdded).isEqualTo(false)
+    }
+
 }

@@ -14,7 +14,11 @@ class TicTacToe(row: Int) {
         }
     }
 
-    fun put(xIndex: Int, yIndex: Int, value: Int) {
-        array[xIndex][yIndex] = value
+    fun put(xIndex: Int, yIndex: Int, value: Int): Boolean {
+        if (array[xIndex][yIndex] == -1) {
+            array[xIndex][yIndex] = value
+            return true
+        }
+        return false
     }
 }
