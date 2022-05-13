@@ -158,4 +158,11 @@ class TicTacToeTest {
 
         assertThat(matchFound).isFalse()
     }
+
+    @Test
+    fun `should return false when all left diagonal cells are -1`(){
+        val matchFound = ticTacToe.matchLeftDiagonally()
+
+        assertThat(matchFound).isFalse()
+    }
 }

@@ -56,7 +56,7 @@ class TicTacToe(row: Int) {
         var leftCount = 1
         var length = array.size-1
         for (index in 0 until array.size-1){
-            if (array[index][length] == array[index+1][length-1]){
+            if (array[index+1][length-1] != -1 && array[index][length] == array[index+1][length-1]){
                 leftCount++
             }
             length--
