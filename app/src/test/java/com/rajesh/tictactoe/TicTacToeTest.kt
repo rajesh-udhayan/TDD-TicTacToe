@@ -186,4 +186,11 @@ class TicTacToeTest {
 
         assertThat(ticTacToe.getWinner()).isEqualTo(PLAYER_X.value)
     }
+
+    @Test
+    fun `should return playerNone as winner when value no matches found`(){
+        ticTacToe.match(0,0,PLAYER_NONE.value)
+
+        assertThat(ticTacToe.getWinner()).isEqualTo(PLAYER_NONE.value)
+    }
 }
