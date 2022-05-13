@@ -22,48 +22,6 @@ class TicTacToe(row: Int) {
         return false
     }
 
-    /*fun matchHorizontally(xIndex: Int): Boolean {
-        var xCount = 1
-        for (index in 0 until array.size-1){
-            if (array[xIndex][index] == array[xIndex][index+1]) {
-                xCount++
-            }
-        }
-        return xCount == 3
-    }
-
-    fun matchVertically(yIndex: Int): Boolean {
-        var yCount = 1
-        for (index in 0 until array.size-1){
-            if (array[index][yIndex] == array[index+1][yIndex]){
-                yCount++
-            }
-        }
-        return yCount == 3
-    }
-
-    fun matchRightDiagonally(): Boolean {
-        var rightCount = 1
-        for(index in 0 until array.size-1){
-            if (array[index+1][index+1] != -1 && array[index][index] == array[index+1][index+1]){
-                rightCount++
-            }
-        }
-        return rightCount == 3
-    }
-
-    fun matchLeftDiagonally(): Boolean {
-        var leftCount = 1
-        var length = array.size-1
-        for (index in 0 until array.size-1){
-            if (array[index+1][length-1] != -1 && array[index][length] == array[index+1][length-1]){
-                leftCount++
-            }
-            length--
-        }
-        return leftCount == 3
-    }*/
-
     fun match(xIndex: Int, yIndex: Int) : Boolean {
         var xCount = 1; var yCount = 1; var rightCount = 1; var leftCount = 1
         var length = array.size-1
