@@ -141,4 +141,11 @@ class TicTacToeTest {
         assertThat(matchFound).isFalse()
     }
 
+    @Test
+    fun `should return false when all right diagonal values are -1`(){
+        ticTacToe.initGame()
+        val matchFound = ticTacToe.matchRightDiagonally()
+
+        assertThat(matchFound).isFalse()
+    }
 }

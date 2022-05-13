@@ -45,7 +45,7 @@ class TicTacToe(row: Int) {
     fun matchRightDiagonally(): Boolean {
         var rightCount = 1
         for(index in 0 until array.size-1){
-            if (array[index][index] == array[index+1][index+1]){
+            if (array[index+1][index+1] != -1 && array[index][index] == array[index+1][index+1]){
                 rightCount++
             }
         }
