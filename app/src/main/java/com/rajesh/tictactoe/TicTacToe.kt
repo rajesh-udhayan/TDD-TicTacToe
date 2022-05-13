@@ -22,7 +22,7 @@ class TicTacToe(row: Int) {
         return false
     }
 
-    fun matchHorizontally(xIndex: Int, value: Int): Boolean {
+    fun matchHorizontally(xIndex: Int): Boolean {
         var xCount = 1
         for (index in 0 until array.size-1){
             if (array[xIndex][index] == array[xIndex][index+1]) {
@@ -32,7 +32,13 @@ class TicTacToe(row: Int) {
         return xCount == 3
     }
 
-    fun matchVertically(yIndex: Int, value: Int): Boolean {
-        return true
+    fun matchVertically(yIndex: Int): Boolean {
+        var yCount = 1
+        for (index in 0 until array.size-1){
+            if (array[index][yIndex] == array[index+1][yIndex]){
+                yCount++
+            }
+        }
+        return yCount == 3
     }
 }

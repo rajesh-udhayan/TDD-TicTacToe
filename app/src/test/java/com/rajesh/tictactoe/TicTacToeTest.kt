@@ -75,7 +75,7 @@ class TicTacToeTest {
         ticTacToe.put(xIndex,0,1)
         ticTacToe.put(xIndex,1,1)
         ticTacToe.put(xIndex,2,1)
-        val matchFound = ticTacToe.matchHorizontally(xIndex,1)
+        val matchFound = ticTacToe.matchHorizontally(xIndex)
 
         assertThat(matchFound).isTrue()
     }
@@ -88,7 +88,7 @@ class TicTacToeTest {
         ticTacToe.put(xIndex,0,1)
         ticTacToe.put(xIndex,1,0)
         ticTacToe.put(xIndex,2,1)
-        val matchFound = ticTacToe.matchHorizontally(xIndex,1)
+        val matchFound = ticTacToe.matchHorizontally(xIndex)
 
         assertThat(matchFound).isFalse()
     }
@@ -101,8 +101,21 @@ class TicTacToeTest {
         ticTacToe.put(0,yIndex, 0)
         ticTacToe.put(1,yIndex, 0)
         ticTacToe.put(2,yIndex, 0)
-        val matchFound = ticTacToe.matchVertically(yIndex,0)
+        val matchFound = ticTacToe.matchVertically(yIndex)
 
         assertThat(matchFound).isTrue()
+    }
+
+    @Test
+    fun `should return false when vertical cells have doesn't same value`(){
+        val yIndex = 1
+
+        ticTacToe.initGame()
+        ticTacToe.put(0,yIndex, 0)
+        ticTacToe.put(1,yIndex, 1)
+        ticTacToe.put(2,yIndex, 0)
+        val matchFound = ticTacToe.matchVertically(yIndex)
+
+        assertThat(matchFound).isFalse()
     }
 }
