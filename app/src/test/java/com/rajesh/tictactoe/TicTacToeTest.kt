@@ -92,4 +92,17 @@ class TicTacToeTest {
 
         assertThat(matchFound).isFalse()
     }
+
+    @Test
+    fun `should return true when vertical cells have same value`(){
+        val yIndex = 1
+
+        ticTacToe.initGame()
+        ticTacToe.put(0,yIndex, 0)
+        ticTacToe.put(1,yIndex, 0)
+        ticTacToe.put(2,yIndex, 0)
+        val matchFound = ticTacToe.matchVertically(yIndex,0)
+
+        assertThat(matchFound).isTrue()
+    }
 }

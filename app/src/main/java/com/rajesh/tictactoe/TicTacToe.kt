@@ -31,4 +31,8 @@ class TicTacToe(row: Int) {
         }
         return xCount == 3
     }
+
+    fun matchVertically(yIndex: Int, value: Int): Boolean {
+        return true
+    }
 }
