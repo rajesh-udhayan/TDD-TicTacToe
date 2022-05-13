@@ -176,4 +176,14 @@ class TicTacToeTest {
 
         assertThat(ticTacToe.getWinner()).isEqualTo(PLAYER_O.value)
     }
+
+    @Test
+    fun `should return playerX as winner when value any match found for O`(){
+        ticTacToe.put(0,0,PLAYER_X.value)
+        ticTacToe.put(0,1,PLAYER_X.value)
+        ticTacToe.put(0,2,PLAYER_X.value)
+        ticTacToe.match(0,0,PLAYER_X.value)
+
+        assertThat(ticTacToe.getWinner()).isEqualTo(PLAYER_X.value)
+    }
 }
