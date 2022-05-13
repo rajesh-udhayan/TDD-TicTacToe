@@ -1,6 +1,7 @@
 package com.rajesh.tictactoe
 
 import com.google.common.truth.Truth.*
+import com.rajesh.tictactoe.TicTacToe.Game.*
 import org.junit.Before
 import org.junit.Test
 
@@ -68,10 +69,10 @@ class TicTacToeTest {
     fun `should return true when horizontal cells have same value`(){
         val xIndex = 0
 
-        ticTacToe.put(xIndex,0,1)
-        ticTacToe.put(xIndex,1,1)
-        ticTacToe.put(xIndex,2,1)
-        val matchFound = ticTacToe.match(xIndex,0)
+        ticTacToe.put(xIndex,0,PLAYER_O.value)
+        ticTacToe.put(xIndex,1,PLAYER_O.value)
+        ticTacToe.put(xIndex,2,PLAYER_O.value)
+        val matchFound = ticTacToe.match(xIndex,0, PLAYER_O.value)
 
         assertThat(matchFound).isTrue()
     }
@@ -80,10 +81,10 @@ class TicTacToeTest {
     fun `should return false when horizontal cells doesn't have same value`(){
         val xIndex = 0
 
-        ticTacToe.put(xIndex,0,1)
-        ticTacToe.put(xIndex,1,0)
-        ticTacToe.put(xIndex,2,1)
-        val matchFound = ticTacToe.match(xIndex,0)
+        ticTacToe.put(xIndex,0,PLAYER_O.value)
+        ticTacToe.put(xIndex,1,PLAYER_X.value)
+        ticTacToe.put(xIndex,2,PLAYER_O.value)
+        val matchFound = ticTacToe.match(xIndex,0, PLAYER_O.value)
 
         assertThat(matchFound).isFalse()
     }
@@ -92,10 +93,10 @@ class TicTacToeTest {
     fun `should return true when vertical cells have same value`(){
         val yIndex = 1
 
-        ticTacToe.put(0,yIndex, 0)
-        ticTacToe.put(1,yIndex, 0)
-        ticTacToe.put(2,yIndex, 0)
-        val matchFound = ticTacToe.match(0,yIndex)
+        ticTacToe.put(0,yIndex, PLAYER_X.value)
+        ticTacToe.put(1,yIndex, PLAYER_X.value)
+        ticTacToe.put(2,yIndex, PLAYER_X.value)
+        val matchFound = ticTacToe.match(0,yIndex,PLAYER_X.value)
 
         assertThat(matchFound).isTrue()
     }
@@ -104,65 +105,75 @@ class TicTacToeTest {
     fun `should return false when vertical cells have doesn't same value`(){
         val yIndex = 1
 
-        ticTacToe.put(0,yIndex, 0)
-        ticTacToe.put(1,yIndex, 1)
-        ticTacToe.put(2,yIndex, 0)
-        val matchFound = ticTacToe.match(0,yIndex)
+        ticTacToe.put(0,yIndex, PLAYER_X.value)
+        ticTacToe.put(1,yIndex, PLAYER_O.value)
+        ticTacToe.put(2,yIndex, PLAYER_X.value)
+        val matchFound = ticTacToe.match(0,yIndex,PLAYER_X.value)
 
         assertThat(matchFound).isFalse()
     }
 
     @Test
     fun `should return true when right diagonal cells have same value`(){
-        ticTacToe.put(0,0,1)
-        ticTacToe.put(1,1,1)
-        ticTacToe.put(2,2,1)
-        val matchFound = ticTacToe.match(0,0)
+        ticTacToe.put(0,0,PLAYER_O.value)
+        ticTacToe.put(1,1,PLAYER_O.value)
+        ticTacToe.put(2,2,PLAYER_O.value)
+        val matchFound = ticTacToe.match(0,0,PLAYER_O.value)
 
         assertThat(matchFound).isTrue()
     }
 
     @Test
     fun `should return false when right diagonal cells doesn't have same value`(){
-        ticTacToe.put(0,0,1)
-        ticTacToe.put(1,1,0)
-        ticTacToe.put(2,2,1)
-        val matchFound = ticTacToe.match(0,0)
+        ticTacToe.put(0,0,PLAYER_O.value)
+        ticTacToe.put(1,1,PLAYER_X.value)
+        ticTacToe.put(2,2,PLAYER_O.value)
+        val matchFound = ticTacToe.match(0,0,PLAYER_O.value)
 
         assertThat(matchFound).isFalse()
     }
 
     @Test
     fun `should return false when all right diagonal values are -1`(){
-        val matchFound = ticTacToe.match(0,0)
+        val matchFound = ticTacToe.match(0,0,PLAYER_NONE.value)
 
         assertThat(matchFound).isFalse()
     }
 
     @Test
     fun `should return true when left diagonal cells have same value`(){
-        ticTacToe.put(0,2,1)
-        ticTacToe.put(1,1,1)
-        ticTacToe.put(2,0,1)
-        val matchFound = ticTacToe.match(0,0)
+        ticTacToe.put(0,2,PLAYER_O.value)
+        ticTacToe.put(1,1,PLAYER_O.value)
+        ticTacToe.put(2,0,PLAYER_O.value)
+        val matchFound = ticTacToe.match(0,0,PLAYER_O.value)
 
         assertThat(matchFound).isTrue()
     }
 
     @Test
     fun `should return false when left diagonal cells doesn't have same value`(){
-        ticTacToe.put(0,2,1)
-        ticTacToe.put(1,1,0)
-        ticTacToe.put(2,0,1)
-        val matchFound = ticTacToe.match(0,0)
+        ticTacToe.put(0,2,PLAYER_O.value)
+        ticTacToe.put(1,1,PLAYER_X.value)
+        ticTacToe.put(2,0,PLAYER_O.value)
+        val matchFound = ticTacToe.match(0,0,PLAYER_O.value)
 
         assertThat(matchFound).isFalse()
     }
 
     @Test
     fun `should return false when all left diagonal cells are -1`(){
-        val matchFound = ticTacToe.match(0,0)
+        val matchFound = ticTacToe.match(0,0,PLAYER_NONE.value)
 
         assertThat(matchFound).isFalse()
+    }
+
+    @Test
+    fun `should return playerO as winner when value any match found for 1`(){
+        ticTacToe.put(0,0,PLAYER_O.value)
+        ticTacToe.put(0,1,PLAYER_O.value)
+        ticTacToe.put(0,2,PLAYER_O.value)
+        ticTacToe.match(0,0,PLAYER_O.value)
+
+        assertThat(ticTacToe.getWinner()).isEqualTo(PLAYER_O.value)
     }
 }
