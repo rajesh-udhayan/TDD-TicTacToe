@@ -13,4 +13,8 @@ class TicTacToe(row: Int) {
             }
         }
     }
+
+    fun put(xIndex: Int, yIndex: Int, value: Int) {
+        array[xIndex][yIndex] = value
+    }
 }

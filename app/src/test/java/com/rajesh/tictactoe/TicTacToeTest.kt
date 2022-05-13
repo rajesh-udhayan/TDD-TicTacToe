@@ -26,4 +26,15 @@ class TicTacToeTest {
         //Randomly test anyone cell value
         assertThat(ticTacToe.getArray()[0][2]).isEqualTo(-1)
     }
+
+    @Test
+    fun `should fill the cell with value when index and value provided`(){
+        val xIndex = 1
+        val yIndex = 2
+        val value = 0
+
+        ticTacToe.put(xIndex,yIndex,value)
+
+        assertThat(ticTacToe.getArray()[xIndex][yIndex]).isEqualTo(value)
+    }
 }
