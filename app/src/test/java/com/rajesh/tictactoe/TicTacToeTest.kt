@@ -118,4 +118,15 @@ class TicTacToeTest {
 
         assertThat(matchFound).isFalse()
     }
+
+    @Test
+    fun `should return true when right diagonal cells have same value`(){
+        ticTacToe.initGame()
+        ticTacToe.put(0,0,1)
+        ticTacToe.put(1,1,1)
+        ticTacToe.put(2,2,1)
+        val matchFound = ticTacToe.matchRightDiagonally()
+
+        assertThat(matchFound).isTrue()
+    }
 }

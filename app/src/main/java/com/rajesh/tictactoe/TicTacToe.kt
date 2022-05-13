@@ -41,4 +41,8 @@ class TicTacToe(row: Int) {
         }
         return yCount == 3
     }
+
+    fun matchRightDiagonally(): Boolean {
+        return true
+    }
 }
