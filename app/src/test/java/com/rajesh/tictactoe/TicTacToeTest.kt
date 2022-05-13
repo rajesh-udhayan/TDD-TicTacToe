@@ -48,7 +48,7 @@ class TicTacToeTest {
         val isAdded = ticTacToe.put(xIndex,yIndex,value)
 
         assertThat(ticTacToe.getArray()[xIndex][yIndex]).isEqualTo(value)
-        assertThat(isAdded).isEqualTo(true)
+        assertThat(isAdded).isTrue()
     }
 
     @Test
@@ -64,7 +64,32 @@ class TicTacToeTest {
         val isAdded = ticTacToe.put(xIndex,yIndex,newValue)
 
         assertThat(ticTacToe.getArray()[xIndex][yIndex]).isNotEqualTo(newValue)
-        assertThat(isAdded).isEqualTo(false)
+        assertThat(isAdded).isFalse()
     }
 
+    @Test
+    fun `should return true when horizontal cells have same value`(){
+        val xIndex = 0
+
+        ticTacToe.initGame()
+        ticTacToe.put(xIndex,0,1)
+        ticTacToe.put(xIndex,1,1)
+        ticTacToe.put(xIndex,2,1)
+        val matchFound = ticTacToe.matchHorizontally(xIndex,1)
+
+        assertThat(matchFound).isTrue()
+    }
+
+    @Test
+    fun `should return false when horizontal cells doesn't have same value`(){
+        val xIndex = 0
+
+        ticTacToe.initGame()
+        ticTacToe.put(xIndex,0,1)
+        ticTacToe.put(xIndex,1,0)
+        ticTacToe.put(xIndex,2,1)
+        val matchFound = ticTacToe.matchHorizontally(xIndex,1)
+
+        assertThat(matchFound).isFalse()
+    }
 }

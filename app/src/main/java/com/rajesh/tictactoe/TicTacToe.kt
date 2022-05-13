@@ -21,4 +21,14 @@ class TicTacToe(row: Int) {
         }
         return false
     }
+
+    fun matchHorizontally(xIndex: Int, value: Int): Boolean {
+        var xCount = 1
+        for (index in 0 until array.size-1){
+            if (array[xIndex][index] == array[xIndex][index+1]) {
+                xCount++
+            }
+        }
+        return xCount == 3
+    }
 }
