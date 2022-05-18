@@ -1,10 +1,7 @@
 package com.rajesh.tictactoe
 
-import androidx.compose.ui.test.assertIsDisplayed
-import androidx.compose.ui.test.assertIsSelectable
+import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createComposeRule
-import androidx.compose.ui.test.onNodeWithTag
-import androidx.compose.ui.test.onNodeWithText
 import androidx.lifecycle.LiveData
 import io.mockk.MockKAnnotations
 import io.mockk.every
@@ -24,19 +21,19 @@ class GameActivityTest {
                 GridButtons(
                     cards = listOf(
                         listOf(
-                            GridCell(PlayerStatus.PlayerX, 0, 0),
-                            GridCell(PlayerStatus.PlayerX, 1, 0),
-                            GridCell(PlayerStatus.PlayerX, 2, 0)
+                            GridCell(PlayerStatus.Empty, 0, 0),
+                            GridCell(PlayerStatus.Empty, 1, 0),
+                            GridCell(PlayerStatus.Empty, 2, 0)
                         ),
                         listOf(
-                            GridCell(PlayerStatus.PlayerX, 0, 1),
-                            GridCell(PlayerStatus.PlayerX, 1, 1),
-                            GridCell(PlayerStatus.PlayerX, 2, 1)
+                            GridCell(PlayerStatus.Empty, 0, 1),
+                            GridCell(PlayerStatus.Empty, 1, 1),
+                            GridCell(PlayerStatus.Empty, 2, 1)
                         ),
                         listOf(
-                            GridCell(PlayerStatus.PlayerX, 0, 2),
-                            GridCell(PlayerStatus.PlayerX, 1, 2),
-                            GridCell(PlayerStatus.PlayerX, 2, 2)
+                            GridCell(PlayerStatus.Empty, 0, 2),
+                            GridCell(PlayerStatus.Empty, 1, 2),
+                            GridCell(PlayerStatus.Empty, 2, 2)
                         )
                     )
                 )
@@ -77,4 +74,5 @@ class GameActivityTest {
             cellNine.assertIsDisplayed()
         }
     }
+
 }
