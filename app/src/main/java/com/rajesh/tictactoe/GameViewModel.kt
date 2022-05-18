@@ -41,9 +41,31 @@ class GameViewModel @Inject constructor(val ticTacToe: TicTacToe) : ViewModel() 
                 )
             }
         }
+
+        gameStatus.value = GameStatus()
     }
 
     fun selectBox(card: GridCell) {
+        val currentPlayer = gameStatus.value?.currentPlayer!!
+        var isModified = false
 
+        val updatedList: MutableList<MutableList<GridCell>> = boxes.value?.map { columns ->
+            val newColumns = columns.map { row ->
+                if (card.columnIndex == row.columnIndex && card.rowIndex == row.rowIndex) {
+                    if (row.status == PlayerStatus.Empty) {
+                        row.status = currentPlayer
+                        isModified = true
+                    }
+                }
+                row
+            }
+            newColumns
+        } as MutableList<MutableList<GridCell>>
+
+        if (isModified) {
+            gameStatus.value?.currentPlayer = gameStatus.value?.currentPlayer!!.next()
+            boxes.value?.removeAll { true }
+            boxes.value = updatedList
+        }
     }
 }
