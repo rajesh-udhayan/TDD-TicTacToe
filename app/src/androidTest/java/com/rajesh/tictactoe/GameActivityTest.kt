@@ -24,19 +24,19 @@ class GameActivityTest {
                 GridButtons(
                     cards = listOf(
                         listOf(
-                            GridCell(TicTacToe.Game.PLAYER_NONE, 0, 0),
-                            GridCell(TicTacToe.Game.PLAYER_NONE, 1, 0),
-                            GridCell(TicTacToe.Game.PLAYER_NONE, 2, 0)
+                            GridCell(PlayerStatus.PlayerX, 0, 0),
+                            GridCell(PlayerStatus.PlayerX, 1, 0),
+                            GridCell(PlayerStatus.PlayerX, 2, 0)
                         ),
                         listOf(
-                            GridCell(TicTacToe.Game.PLAYER_NONE, 0, 1),
-                            GridCell(TicTacToe.Game.PLAYER_NONE, 1, 1),
-                            GridCell(TicTacToe.Game.PLAYER_NONE, 2, 1)
+                            GridCell(PlayerStatus.PlayerX, 0, 1),
+                            GridCell(PlayerStatus.PlayerX, 1, 1),
+                            GridCell(PlayerStatus.PlayerX, 2, 1)
                         ),
                         listOf(
-                            GridCell(TicTacToe.Game.PLAYER_NONE, 0, 2),
-                            GridCell(TicTacToe.Game.PLAYER_NONE, 1, 2),
-                            GridCell(TicTacToe.Game.PLAYER_NONE, 2, 2)
+                            GridCell(PlayerStatus.PlayerX, 0, 2),
+                            GridCell(PlayerStatus.PlayerX, 1, 2),
+                            GridCell(PlayerStatus.PlayerX, 2, 2)
                         )
                     )
                 )
