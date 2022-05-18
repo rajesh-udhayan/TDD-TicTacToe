@@ -23,6 +23,7 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.LiveData
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -49,15 +50,28 @@ class GameActivity : ComponentActivity() {
     @Composable
     fun GameView(viewModel: GameViewModel) {
         val cards: List<List<GridCell>>by viewModel.getBoxes().observeAsState(listOf())
+        val gameStatus: LiveData<GameStatus> = viewModel.getGameStatus()
+        val currentPlayer: String= if (gameStatus.value?.currentPlayer == PlayerStatus.PlayerX) "Player X" else "Player O"
+        val isGameCompleted:Boolean = gameStatus.value?.isGameCompleted == true
+        val winner: String= if (gameStatus.value?.winingPlayer == PlayerStatus.PlayerX) "Player X" else "Player O"
+
         Column {
-            GridButtons(cards){
-                viewModel.selectBox(it)
+            GridButtons(cards,currentPlayer,isGameCompleted,winner){
+                if (isGameCompleted) {
+                    viewModel.initGridBoxes()
+                } else {
+                    viewModel.selectBox(it)
+                }
             }
         }
     }
 
     @Composable
-    fun GridButtons( cards: List<List<GridCell>>, boxSelected: (card: GridCell) -> Unit = {}) {
+    fun GridButtons( cards: List<List<GridCell>>,
+                     currentPlayer:String,
+                     isGameCompleted: Boolean,
+                     winner: String,
+                     boxSelected: (card: GridCell) -> Unit = {}) {
         Text(text = "TicTacToe")
 
         Column(
@@ -78,6 +92,26 @@ class GameActivity : ComponentActivity() {
                             boxSelected(card)
                         }
                     }
+                }
+            }
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(color = Color.White),
+                horizontalArrangement = Arrangement.Center,
+            ) {
+                if (isGameCompleted) {
+                    Text(
+                        text = "Winner: $winner",
+                        fontSize = 28.sp,
+                        color = Color.Black,
+                    )
+                } else {
+                    Text(
+                        text = "Current: $currentPlayer",
+                        fontSize = 28.sp,
+                        color = Color.Black,
+                    )
                 }
             }
         }
