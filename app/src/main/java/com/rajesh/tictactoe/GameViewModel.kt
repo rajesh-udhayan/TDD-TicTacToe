@@ -1,9 +1,5 @@
 package com.rajesh.tictactoe
 
-import android.app.Application
-import android.content.ContentValues.TAG
-import android.util.Log
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -13,8 +9,16 @@ import javax.inject.Inject
 @HiltViewModel
 class GameViewModel @Inject constructor(val ticTacToe: TicTacToe) : ViewModel() {
 
+    private val gameStatus: MutableLiveData<GameStatus> by lazy {
+        MutableLiveData<GameStatus>()
+    }
+
     private val boxes: MutableLiveData<MutableList<MutableList<GridCell>>> by lazy {
         MutableLiveData<MutableList<MutableList<GridCell>>>()
+    }
+
+    fun getGameStatus(): LiveData<GameStatus> {
+        return gameStatus
     }
 
     fun getBoxes(): LiveData<MutableList<MutableList<GridCell>>> {
