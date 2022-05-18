@@ -13,6 +13,8 @@ import androidx.compose.foundation.lazy.GridCells
 import androidx.compose.foundation.lazy.LazyVerticalGrid
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
@@ -20,6 +22,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -38,13 +41,40 @@ class GameActivity : ComponentActivity() {
         setContent {
             TicTacToeTheme {
                 Surface(color = MaterialTheme.colors.background) {
-                    GameView(viewModel)
+                    MainView(viewModel)
                 }
             }
         }
     }
 
 }
+
+    @Composable
+    fun MainView(viewModel: GameViewModel){
+        Scaffold(
+            topBar = {
+                TopAppBar(
+                    title = {
+                        Text(text = stringResource(id = R.string.app_name))
+                    },
+                    actions = {
+                        IconButton(
+                            onClick = {
+                                viewModel.initGridBoxes()
+                            }
+                        ) {
+                            Icon(
+                                Icons.Filled.Refresh,
+                                contentDescription = "Reload Game"
+                            )
+                        }
+                    }
+                )
+            }
+        ) {
+            GameView(viewModel)
+        }
+    }
 
     @OptIn(ExperimentalFoundationApi::class)
     @Composable
@@ -55,7 +85,14 @@ class GameActivity : ComponentActivity() {
         val isGameCompleted:Boolean = gameStatus.value?.isGameCompleted == true
         val winner: String= if (gameStatus.value?.winingPlayer == PlayerStatus.PlayerX) "Player X" else "Player O"
 
-        Column {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .fillMaxWidth()
+                .fillMaxHeight(),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+        ) {
             GridButtons(cards,currentPlayer,isGameCompleted,winner){
                 if (isGameCompleted) {
                     viewModel.initGridBoxes()
@@ -72,7 +109,9 @@ class GameActivity : ComponentActivity() {
                      isGameCompleted: Boolean,
                      winner: String,
                      boxSelected: (card: GridCell) -> Unit = {}) {
-        Text(text = "TicTacToe")
+        Text(text = "TicTacToe",
+            style = Typography().h3,
+            modifier = Modifier.padding(20.dp))
 
         Column(
             modifier = Modifier
