@@ -1,16 +1,13 @@
-package com.rajesh.tictactoe
+package com.rajesh.tictactoe.game
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.GridCells
-import androidx.compose.foundation.lazy.LazyVerticalGrid
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -23,10 +20,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.LiveData
+import com.rajesh.tictactoe.model.GameStatus
+import com.rajesh.tictactoe.model.GridCell
+import com.rajesh.tictactoe.model.PlayerStatus
+import com.rajesh.tictactoe.R
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -104,11 +104,11 @@ class GameActivity : ComponentActivity() {
     }
 
     @Composable
-    fun GridButtons( cards: List<List<GridCell>>,
-                     currentPlayer:String,
-                     isGameCompleted: Boolean,
-                     winner: String,
-                     boxSelected: (card: GridCell) -> Unit = {}) {
+    fun GridButtons(cards: List<List<GridCell>>,
+                    currentPlayer:String,
+                    isGameCompleted: Boolean,
+                    winner: String,
+                    boxSelected: (card: GridCell) -> Unit = {}) {
         Text(text = "TicTacToe",
             style = Typography().h3,
             modifier = Modifier.padding(20.dp))

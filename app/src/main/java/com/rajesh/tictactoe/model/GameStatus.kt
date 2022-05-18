@@ -1,6 +1,4 @@
-package com.rajesh.tictactoe
-
-import com.rajesh.tictactoe.PlayerStatus
+package com.rajesh.tictactoe.model
 
 class GameStatus(
     var currentPlayer: PlayerStatus = PlayerStatus.PlayerX,

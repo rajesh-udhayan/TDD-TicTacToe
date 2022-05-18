@@ -2,6 +2,9 @@ package com.rajesh.tictactoe
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.google.common.truth.Truth.assertThat
+import com.rajesh.tictactoe.game.GameViewModel
+import com.rajesh.tictactoe.model.GridCell
+import com.rajesh.tictactoe.model.PlayerStatus
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test

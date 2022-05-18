@@ -2,10 +2,10 @@ package com.rajesh.tictactoe
 
 import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createComposeRule
-import androidx.lifecycle.LiveData
-import io.mockk.MockKAnnotations
-import io.mockk.every
-import io.mockk.mockk
+import com.rajesh.tictactoe.game.GridButtons
+import com.rajesh.tictactoe.game.TicTacToeTheme
+import com.rajesh.tictactoe.model.GridCell
+import com.rajesh.tictactoe.model.PlayerStatus
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test

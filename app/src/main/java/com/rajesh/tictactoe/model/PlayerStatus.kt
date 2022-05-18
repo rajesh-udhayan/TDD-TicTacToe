@@ -1,4 +1,4 @@
-package com.rajesh.tictactoe
+package com.rajesh.tictactoe.model
 
 enum class PlayerStatus {
     Empty,
