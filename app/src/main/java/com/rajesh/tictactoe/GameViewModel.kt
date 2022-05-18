@@ -96,5 +96,23 @@ class GameViewModel @Inject constructor(val ticTacToe: TicTacToe) : ViewModel() 
             }
         }
 
+        //For Diagonal cells
+        if (
+            boxes.value?.get(0)?.get(0)!!.status == boxes.value?.get(1)?.get(1)!!.status &&
+            boxes.value?.get(1)?.get(1)!!.status == boxes.value?.get(2)?.get(2)!!.status &&
+            boxes.value?.get(2)?.get(2)!!.status != PlayerStatus.Empty
+        ) {
+            gameStatus.value?.isGameCompleted = true
+            gameStatus.value?.winingPlayer = boxes.value?.get(1)?.get(1)!!.status
+        }
+
+        if (
+            boxes.value?.get(0)?.get(2)!!.status == boxes.value?.get(1)?.get(1)!!.status &&
+            boxes.value?.get(1)?.get(1)!!.status == boxes.value?.get(2)?.get(0)!!.status &&
+            boxes.value?.get(2)?.get(0)!!.status != PlayerStatus.Empty
+        ) {
+            gameStatus.value?.isGameCompleted = true
+            gameStatus.value?.winingPlayer = boxes.value?.get(1)?.get(1)!!.status
+        }
     }
 }
