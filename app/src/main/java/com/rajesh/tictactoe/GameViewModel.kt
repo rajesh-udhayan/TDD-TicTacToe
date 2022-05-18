@@ -67,5 +67,21 @@ class GameViewModel @Inject constructor(val ticTacToe: TicTacToe) : ViewModel() 
             boxes.value?.removeAll { true }
             boxes.value = updatedList
         }
+
+        checkWinnerStatus()
+    }
+
+    private fun checkWinnerStatus(){
+        //For vertical cells
+        (0..2).forEach { index ->
+            if (
+                boxes.value?.get(index = index)?.get(0)!!.status == boxes.value?.get(index = index)?.get(1)!!.status &&
+                boxes.value?.get(index = index)?.get(1)!!.status == boxes.value?.get(index = index)?.get(2)!!.status &&
+                boxes.value?.get(index = index)?.get(2)!!.status != PlayerStatus.Empty
+            ) {
+                gameStatus.value?.isGameCompleted = true
+                gameStatus.value?.winingPlayer = boxes.value?.get(index = index)?.get(2)!!.status
+            }
+        }
     }
 }
