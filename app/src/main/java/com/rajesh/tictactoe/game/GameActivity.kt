@@ -93,7 +93,7 @@ class GameActivity : ComponentActivity() {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            GridButtons(cards,currentPlayer,isGameCompleted,winner){
+            GameContentView(cards,currentPlayer,isGameCompleted,winner){
                 if (isGameCompleted) {
                     viewModel.initGridBoxes()
                 } else {
@@ -104,11 +104,11 @@ class GameActivity : ComponentActivity() {
     }
 
     @Composable
-    fun GridButtons(cards: List<List<GridCell>>,
-                    currentPlayer:String,
-                    isGameCompleted: Boolean,
-                    winner: String,
-                    boxSelected: (card: GridCell) -> Unit = {}) {
+    fun GameContentView(cards: List<List<GridCell>>,
+                        currentPlayer:String,
+                        isGameCompleted: Boolean,
+                        winner: String,
+                        boxSelected: (card: GridCell) -> Unit = {}) {
         Text(text = "TicTacToe",
             style = Typography().h3,
             modifier = Modifier.padding(20.dp))
@@ -127,7 +127,7 @@ class GameActivity : ComponentActivity() {
                     horizontalArrangement = Arrangement.SpaceAround
                 ) {
                     rows.forEach { card ->
-                        ActionButton(card) {
+                        GridCell(card) {
                             boxSelected(card)
                         }
                     }
@@ -158,7 +158,7 @@ class GameActivity : ComponentActivity() {
 
     @OptIn(ExperimentalMaterialApi::class)
     @Composable
-    fun ActionButton(card: GridCell, selectBox: () -> Unit = {}) {
+    fun GridCell(card: GridCell, selectBox: () -> Unit = {}) {
         val indexTag = "Cell ${card.rowIndex}${card.columnIndex}"
         Card(
             modifier = Modifier

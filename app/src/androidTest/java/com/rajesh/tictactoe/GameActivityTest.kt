@@ -2,7 +2,7 @@ package com.rajesh.tictactoe
 
 import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createComposeRule
-import com.rajesh.tictactoe.game.GridButtons
+import com.rajesh.tictactoe.game.GameContentView
 import com.rajesh.tictactoe.game.TicTacToeTheme
 import com.rajesh.tictactoe.model.GridCell
 import com.rajesh.tictactoe.model.PlayerStatus
@@ -18,7 +18,7 @@ class GameActivityTest {
     fun setUp() {
         composeTestRule.setContent {
             TicTacToeTheme {
-                GridButtons(
+                GameContentView(
                     cards = listOf(
                         listOf(
                             GridCell(PlayerStatus.Empty, 0, 0),
