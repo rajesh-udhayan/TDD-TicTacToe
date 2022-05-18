@@ -12,7 +12,4 @@ object ApplicationModule {
 
     private const val rowCount = 3
 
-    @Singleton
-    @Provides
-    fun provideTicTacToe() = TicTacToe(rowCount)
 }

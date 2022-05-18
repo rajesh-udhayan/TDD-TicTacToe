@@ -4,10 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
-import javax.inject.Inject
 
 @HiltViewModel
-class GameViewModel @Inject constructor(val ticTacToe: TicTacToe) : ViewModel() {
+class GameViewModel : ViewModel() {
 
     private val gameStatus: MutableLiveData<GameStatus> by lazy {
         MutableLiveData<GameStatus>()
@@ -28,8 +27,6 @@ class GameViewModel @Inject constructor(val ticTacToe: TicTacToe) : ViewModel() 
     fun initGridBoxes() {
         var columnIndex: Int = 0
         var rowIndex: Int = 0
-
-        ticTacToe.initGame()
 
         boxes.value = MutableList(3) {
             rowIndex = 0

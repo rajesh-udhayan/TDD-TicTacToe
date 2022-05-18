@@ -15,8 +15,7 @@ class GameViewModelTest {
 
     @Before
     fun setUp(){
-        val ticTacToe = TicTacToe(3)
-        viewModel = GameViewModel(ticTacToe)
+        viewModel = GameViewModel()
 
         viewModel.initGridBoxes()
     }
