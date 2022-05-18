@@ -64,4 +64,21 @@ class GameViewModelTest {
 
         assertThat(viewModel.getGameStatus().getOrAwaitValue().winingPlayer).isEqualTo(PlayerStatus.PlayerX)
     }
+
+    @Test
+    fun shouldReturnPlayerAsWinnerWhenHorizontalCellsHaveSameValue(){
+        val gridCell1: GridCell = viewModel.getBoxes().getOrAwaitValue()[0][0]
+        val gridCell2: GridCell = viewModel.getBoxes().getOrAwaitValue()[0][1]
+        val gridCell3: GridCell = viewModel.getBoxes().getOrAwaitValue()[1][0]
+        val gridCell4: GridCell = viewModel.getBoxes().getOrAwaitValue()[1][1]
+        val gridCell5: GridCell = viewModel.getBoxes().getOrAwaitValue()[2][0]
+
+        viewModel.selectBox(gridCell1)
+        viewModel.selectBox(gridCell2)
+        viewModel.selectBox(gridCell3)
+        viewModel.selectBox(gridCell4)
+        viewModel.selectBox(gridCell5)
+
+        assertThat(viewModel.getGameStatus().getOrAwaitValue().winingPlayer).isEqualTo(PlayerStatus.PlayerX)
+    }
 }

@@ -83,5 +83,18 @@ class GameViewModel @Inject constructor(val ticTacToe: TicTacToe) : ViewModel() 
                 gameStatus.value?.winingPlayer = boxes.value?.get(index = index)?.get(2)!!.status
             }
         }
+
+        //For horizontal cells
+        (0..2).forEach() { index ->
+            if (
+                boxes.value?.get(0)?.get(index = index)!!.status == boxes.value?.get(1)?.get(index = index)!!.status &&
+                boxes.value?.get(1)?.get(index = index)!!.status == boxes.value?.get(2)?.get(index = index)!!.status &&
+                boxes.value?.get(2)?.get(index = index)!!.status != PlayerStatus.Empty
+            ) {
+                gameStatus.value?.isGameCompleted = true
+                gameStatus.value?.winingPlayer = boxes.value?.get(2)?.get(index = index)!!.status
+            }
+        }
+
     }
 }
