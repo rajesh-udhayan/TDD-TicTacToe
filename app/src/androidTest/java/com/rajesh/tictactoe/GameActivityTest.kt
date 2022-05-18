@@ -35,7 +35,8 @@ class GameActivityTest {
                             GridCell(PlayerStatus.Empty, 1, 2),
                             GridCell(PlayerStatus.Empty, 2, 2)
                         )
-                    )
+                    ),
+                    "",false,""
                 )
             }
         }

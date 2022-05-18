@@ -60,7 +60,7 @@ class GameViewModel @Inject constructor(): ViewModel() {
             newColumns
         } as MutableList<MutableList<GridCell>>
 
-        if (isModified) {
+        if (isModified && gameStatus.value?.isGameCompleted == false) {
             gameStatus.value?.currentPlayer = gameStatus.value?.currentPlayer!!.next()
             boxes.value?.removeAll { true }
             boxes.value = updatedList
